@@ -41,15 +41,32 @@ Open:
 
 ## 3. Deploy to Render (free)
 
-1. Push this project to GitHub.
-2. Go to [render.com](https://render.com) and create a **Web Service**.
-3. Connect the repo.
-4. Render will detect `render.yaml` automatically.
-5. Add environment variable:
+Repo: https://github.com/deepshikhabhati/hamlet-translation-api
+
+### One-click deploy
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/deepshikhabhati/hamlet-translation-api)
+
+Or open:
+
+https://render.com/deploy?repo=https://github.com/deepshikhabhati/hamlet-translation-api
+
+Steps:
+
+1. Sign in to Render with GitHub.
+2. Click **Apply** on the detected `render.yaml` blueprint.
+3. Add environment variable:
    - `OPENAI_API_KEY` = your OpenAI key
-6. Deploy.
+4. Wait for the Docker build to finish.
 
 Render builds from the root `Dockerfile`.
+
+### CLI deploy (after `render login`)
+
+```bash
+chmod +x deploy/render_deploy.sh
+./deploy/render_deploy.sh
+```
 
 ## 4. Deploy with Docker anywhere
 
