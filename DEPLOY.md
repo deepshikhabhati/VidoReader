@@ -41,15 +41,15 @@ Open:
 
 ## 3. Deploy to Render (free)
 
-Repo: https://github.com/deepshikhabhati/hamlet-translation-api
+Repo: https://github.com/deepshikhabhati/VidoReader
 
 ### One-click deploy
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/deepshikhabhati/hamlet-translation-api)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/deepshikhabhati/VidoReader)
 
 Or open:
 
-https://render.com/deploy?repo=https://github.com/deepshikhabhati/hamlet-translation-api
+https://render.com/deploy?repo=https://github.com/deepshikhabhati/VidoReader
 
 Steps:
 

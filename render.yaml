@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: hamlet-translation-api
+    name: vidoreader
     runtime: docker
     plan: free
     healthCheckPath: /

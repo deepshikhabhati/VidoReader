@@ -17,13 +17,13 @@ fi
 
 echo "Using workspace $WORKSPACE_ID"
 
-if render services list --output json 2>/dev/null | python3 -c "import sys,json; data=json.load(sys.stdin); print(any(s.get('service',{}).get('name')=='hamlet-translation-api' for s in data))" | rg -q True; then
-  echo "Service hamlet-translation-api already exists."
+if render services list --output json 2>/dev/null | python3 -c "import sys,json; data=json.load(sys.stdin); print(any(s.get('service',{}).get('name')=='vidoreader' for s in data))" | rg -q True; then
+  echo "Service vidoreader already exists."
 else
   render services create \
-    --name hamlet-translation-api \
+    --name vidoreader \
     --type web_service \
-    --repo https://github.com/deepshikhabhati/hamlet-translation-api \
+    --repo https://github.com/deepshikhabhati/VidoReader \
     --branch main \
     --runtime docker \
     --plan free \
