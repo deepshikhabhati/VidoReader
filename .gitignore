@@ -1,0 +1,22 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Large local artifacts not needed for deploy
+*.pdf
+*.faiss
+*.npy
+image_embeddings1.json
+clip_image_embeddings.json
+AI_wiki_embeddings*.json
+Full*.json
+PGDM_*.json
+hamlet_version*.json
+german.json
+english.json
+*.log

@@ -1,0 +1,1101 @@
+{
+  "title": "Hamlet Translation Explorer",
+  "dimensionKeys": [
+    {
+      "id": "semantic",
+      "label": "Semantic"
+    },
+    {
+      "id": "chronology",
+      "label": "Chronology"
+    },
+    {
+      "id": "emotion",
+      "label": "Emotion"
+    },
+    {
+      "id": "style",
+      "label": "Style"
+    },
+    {
+      "id": "metaphor",
+      "label": "Metaphor"
+    },
+    {
+      "id": "tone",
+      "label": "Tone"
+    },
+    {
+      "id": "voice",
+      "label": "Character Voice"
+    },
+    {
+      "id": "cultural",
+      "label": "Cultural"
+    }
+  ],
+  "passages": [
+    {
+      "id": "pair-1",
+      "pairId": 1,
+      "label": "Calls Hamlet / Prinz Hamlet Sagte",
+      "englishQuery": "What events before the beginning of Hamlet establish the main conflict of the play?",
+      "germanQuery": "Welche Ereignisse vor Beginn des Dramas begründen den zentralen Konflikt von Hamlet?",
+      "structurallyAligned": false,
+      "retrievalSimilarity": 0.7237,
+      "semanticDifference": "Different topical focus: English 'Calls Hamlet' vs German 'Prinz Hamlet Sagte'",
+      "emotionalDifference": "English emotional cues: none; German emotional cues: liebe",
+      "translationDifference": "Retrieved chunks are not aligned translation partners; query routing surfaced different scene segments",
+      "english": {
+        "chunkId": "ENG_0210",
+        "correspondingChunk": "GER_0210",
+        "nodeId": "semantic_210",
+        "name": "Calls Hamlet",
+        "content": "Who calls on Hamlet?",
+        "summary": "Who calls on Hamlet?",
+        "keywords": [
+          "calls hamlet",
+          "hamlet",
+          "calls"
+        ],
+        "actId": 4,
+        "sceneId": 12,
+        "actName": "ACT 4",
+        "sceneName": "Scene 1",
+        "topicPath": "ACT 4/Scene 1/Calls Hamlet",
+        "retrievalScore": 0.7778,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "german": {
+        "chunkId": "GER_0153",
+        "correspondingChunk": "ENG_0153",
+        "nodeId": "semantic_153",
+        "name": "Prinz Hamlet Sagte",
+        "content": "Und doch glaub ich noch immer, daß\nverachtete Liebe die erste Quelle und Ursach dieser Schwermuth\ngewesen--Wie steht’s, Ophelia? Ihr habt nicht nöthig uns zu\nerzählen, was Prinz Hamlet sagte; wir haben alles gehört--\n(Ophelia geht ab.) Gnädigster Herr, handelt nach euerm Gefallen; wenn es euch aber\nnicht entgegen ist, so laßt die Königin seine Frau Mutter nach der\nComödie in einer geheimen Unterredung einen Versuch machen, die\nUrsache seines Grams von ihm zu erfahren; laßt sie mit der Sprache\ngerad gegen ihn herausgehen; und ich will mich, wenn ihr’s für gut\nanseht, an einen Ort stellen, wo ich alles was sie mit einander\nreden, hören kan. Will er sich nicht erklären, so schikt ihn nach\nEngland, oder verwahrt ihn sonst irgendwo; was eure Klugheit das\nrathsamste finden wird. König. Wir wollen es so machen--Wahnwiz ist an den Grossen allemal was\nverdächtiges das man nicht unbewacht lassen soll. (Sie gehen ab.) (Hamlet mit zween oder dreyen Schauspielern tritt auf.) Hamlet.",
+        "summary": "Ihr habt nicht nöthig uns zu\nerzählen, was Prinz Hamlet sagte; wir haben alles gehört--\n(Ophelia geht ab.) Gnädigster Herr, handelt nach euerm Gefallen; wenn es euch aber\nnicht entgegen ist, so laßt die Königin seine Frau Mutter nach der\nComödie in einer geheimen Unterredung einen Versuch machen, die\nUrsache seines Grams von ihm zu erfahren; laßt sie mit der Sprache\ngerad gegen ihn herausgehen; und ich will mich, wenn ihr’s für gut\nanseht, an einen Ort stellen, wo ich alles was sie mit einander\nreden, hören kan. Will er sich nicht erklären, so schikt ihn nach\nEngland, oder verwahrt ihn sonst irgendwo; was eure Klugheit das\nrathsamste finden wird. Wir wollen es so machen--Wahnwiz ist an den Grossen allemal was\nverdächtiges das man nicht unbewacht lassen soll.",
+        "keywords": [
+          "prinz hamlet sagte",
+          "verachtete liebe",
+          "ursach dieser schwermuth",
+          "ihn nach england",
+          "wie steht ophelia"
+        ],
+        "actId": 3,
+        "sceneId": 9,
+        "actName": "Dritter Aufzug.",
+        "sceneName": "Dritte Scene.",
+        "topicPath": "Dritter Aufzug./Dritte Scene./Prinz Hamlet Sagte",
+        "retrievalScore": 0.7825,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "dimensions": [
+        {
+          "id": "semantic",
+          "label": "Semantic",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "chronology",
+          "label": "Chronology",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "emotion",
+          "label": "Emotion",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "style",
+          "label": "Style",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "metaphor",
+          "label": "Metaphor",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "tone",
+          "label": "Tone",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "voice",
+          "label": "Character Voice",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "cultural",
+          "label": "Cultural",
+          "english": 0,
+          "german": 0
+        }
+      ],
+      "differences": [],
+      "summary": "LLM analysis has not been run yet.",
+      "finalConclusion": "Run the comparison batch to fill dimension scores and highlights."
+    },
+    {
+      "id": "pair-2",
+      "pairId": 2,
+      "label": "Hamlet Dear Brother / Polonius Ophelia Geht",
+      "englishQuery": "How does Claudius explain his marriage to Gertrude shortly after King Hamlet's death?",
+      "germanQuery": "Wie begründet Claudius seine Heirat mit Gertrude kurz nach dem Tod König Hamlets?",
+      "structurallyAligned": false,
+      "retrievalSimilarity": 0.8252,
+      "semanticDifference": "Different topical focus: English 'Hamlet Dear Brother' vs German 'Polonius Ophelia Geht'",
+      "emotionalDifference": "English emotional cues: death, sorrow; German emotional cues: liebe",
+      "translationDifference": "Retrieved chunks are not aligned translation partners; query routing surfaced different scene segments",
+      "english": {
+        "chunkId": "ENG_0012",
+        "correspondingChunk": "GER_0012",
+        "nodeId": "semantic_12",
+        "name": "Hamlet Dear Brother",
+        "content": "But look, the morn in russet mantle clad\n Walks o’er the dew of yon high eastward hill. Break we our watch up, and by my advice\n Let us impart what we have seen tonight\n Unto young Hamlet; for, upon my life,\n This spirit, dumb to us, will speak to him. Do you consent we shall acquaint him with it\n As needful in our loves, fitting our duty? Let’s do ’t, I pray, and I this morning know\n Where we shall find him most convenient. 21\nHamlet\nACT 1. SC. 2\nKING\nFlourish. Enter Claudius, King of Denmark, Gertrude the\nQueen, the Council, as Polonius, and his son Laertes,\nHamlet, with others, among them Voltemand and\nCornelius. Though yet of Hamlet our dear brother’s death\n The memory be green, and that it us befitted\n To bear our hearts in grief, and our whole kingdom\n To be contracted in one brow of woe,\n Yet so far hath discretion fought with nature\n That we with wisest sorrow think on him\n Together with remembrance of ourselves. Therefore our sometime sister, now our queen,\n Th’ imperial jointress to this warlike state,\n Have we (as ’twere with a defeated joy,\n With an auspicious and a dropping eye,\n With mirth in funeral and with dirge in marriage,\n In equal scale weighing delight and dole)\n Taken to wife. Nor have we herein barred\n Your better wisdoms, which have freely gone\n With this affair along. For all, our thanks. Now follows that you know.",
+        "summary": "Break we our watch up, and by my advice\n Let us impart what we have seen tonight\n Unto young Hamlet; for, upon my life,\n This spirit, dumb to us, will speak to him. Though yet of Hamlet our dear brother’s death\n The memory be green, and that it us befitted\n To bear our hearts in grief, and our whole kingdom\n To be contracted in one brow of woe,\n Yet so far hath discretion fought with nature\n That we with wisest sorrow think on him\n Together with remembrance of ourselves. Therefore our sometime sister, now our queen,\n Th’ imperial jointress to this warlike state,\n Have we (as ’twere with a defeated joy,\n With an auspicious and a dropping eye,\n With mirth in funeral and with dirge in marriage,\n In equal scale weighing delight and dole)\n Taken to wife.",
+        "keywords": [
+          "hamlet dear brother",
+          "hamlet voltemand cornelius",
+          "denmark gertrude queen",
+          "queen council polonius",
+          "claudius"
+        ],
+        "actId": 1,
+        "sceneId": 1,
+        "actName": "ACT 1",
+        "sceneName": "Scene 1",
+        "topicPath": "ACT 1/Scene 1/Hamlet Dear Brother",
+        "retrievalScore": 0.8007,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "german": {
+        "chunkId": "GER_0136",
+        "correspondingChunk": "ENG_0136",
+        "nodeId": "semantic_136",
+        "name": "Polonius Ophelia Geht",
+        "content": "Polonius. Es ist nichts gewissers, und er ersucht Eure Majestäten, Zuschauer\ndabey abzugeben. König. Von Herzen gern, es erfreut mich ungemein, zu hören, daß er so gut\ndisponiert ist. Erhaltet ihn bey dieser Laune, meine guten Freunde,\nund seyd darauf bedacht, daß er immer mehr Geschmak an dergleichen\nZeitvertreib finde. Rosenkranz. Wir wollen nichts ermangeln lassen, Gnädigster Herr. (Sie gehen ab.) König. Liebste Gertrude, verlaßt ihr uns auch; wir haben heimliche\nAnstalten gemacht, daß Hamlet hieher komme, damit er Ophelien, als\nob es von ungefehr geschähe, hier antreffe. Ihr Vater und ich\nwollen einen solchen Plaz nehmen, daß wir, ungesehn, Zeugen von\nallem was zwischen ihnen vorgehen wird, seyn, und also durch uns\nselbst urtheilen können, ob die Liebe die Ursache seines Trübsinns\nist oder nicht. Königin. Ich gehorche euch; und an meinem Theil, Ophelia, wünsch’ ich, daß\neure Reizungen die glükliche Ursach von Hamlets Zustande seyn mögen:\nDenn das würde mir Hoffnung machen, daß eure Tugend ihn, zu euer\nbeyder Ehre, wieder auf den rechten Weg bringen würde. Ophelia. Gnädigste Frau, ich wünsch’ es so. (Die Königin geht ab.) Polonius. Ophelia, geht ihr hier auf und ab--Gnädigster Herr, wenn es\nbeliebig ist, wollen wir uns hier verbergen--\n(Zu Ophelia.) Thut, als ob ihr in diesem Buche leset; damit das Ansehn einer\ngeistlichen Übung eure Einsamkeit beschönige. Es begegnet nur gar\nzu oft, daß wir mit der andächtigsten Mine und der frömmsten\nGebehrde an dem Teufel selbst saugen. König (vor sich.) Das ist nur gar zu wahr. Was für einen scharfen Geissel-Streich\ngiebt diese Rede meinem Gewissen! Die Wangen einer Hure durch\nKunst mit betrügerischen Rosen bemahlt, sind nicht häßlicher unter\nihrer Schminke, als meine That unter der schönen Larve meiner Worte--\nO schwere Bürde! Polonius. Ich hör’ ihn kommen; wir wollen uns entfernen, Gnädigster Herr. (Alle, bis auf Ophelia gehen ab.)",
+        "summary": "Ihr Vater und ich\nwollen einen solchen Plaz nehmen, daß wir, ungesehn, Zeugen von\nallem was zwischen ihnen vorgehen wird, seyn, und also durch uns\nselbst urtheilen können, ob die Liebe die Ursache seines Trübsinns\nist oder nicht. Ich gehorche euch; und an meinem Theil, Ophelia, wünsch’ ich, daß\neure Reizungen die glükliche Ursach von Hamlets Zustande seyn mögen:\nDenn das würde mir Hoffnung machen, daß eure Tugend ihn, zu euer\nbeyder Ehre, wieder auf den rechten Weg bringen würde. Ophelia, geht ihr hier auf und ab--Gnädigster Herr, wenn es\nbeliebig ist, wollen wir uns hier verbergen--\n(Zu Ophelia.)",
+        "keywords": [
+          "polonius ophelia geht",
+          "würde ophelia gnädigste",
+          "könig liebste gertrude",
+          "von hamlets zustande",
+          "betrügerischen rosen bemahlt"
+        ],
+        "actId": 3,
+        "sceneId": 8,
+        "actName": "Dritter Aufzug.",
+        "sceneName": "Erste Scene.",
+        "topicPath": "Dritter Aufzug./Erste Scene./Polonius Ophelia Geht",
+        "retrievalScore": 0.7946,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "dimensions": [
+        {
+          "id": "semantic",
+          "label": "Semantic",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "chronology",
+          "label": "Chronology",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "emotion",
+          "label": "Emotion",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "style",
+          "label": "Style",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "metaphor",
+          "label": "Metaphor",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "tone",
+          "label": "Tone",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "voice",
+          "label": "Character Voice",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "cultural",
+          "label": "Cultural",
+          "english": 0,
+          "german": 0
+        }
+      ],
+      "differences": [],
+      "summary": "LLM analysis has not been run yet.",
+      "finalConclusion": "Run the comparison batch to fill dimension scores and highlights."
+    },
+    {
+      "id": "pair-3",
+      "pairId": 3,
+      "label": "Hamlet Said / Hamlet Für Was",
+      "englishQuery": "Why does Hamlet continue to mourn while the rest of the court has accepted the new situation?",
+      "germanQuery": "Warum trauert Hamlet weiter, während der Hof die neue Situation bereits akzeptiert hat?",
+      "structurallyAligned": false,
+      "retrievalSimilarity": 0.7859,
+      "semanticDifference": "Different topical focus: English 'Hamlet Said' vs German 'Hamlet Für Was'",
+      "emotionalDifference": "English emotional cues: grief, madness; German emotional cues: none",
+      "translationDifference": "Retrieved chunks are not aligned translation partners; query routing surfaced different scene segments",
+      "english": {
+        "chunkId": "ENG_0136",
+        "correspondingChunk": "GER_0136",
+        "nodeId": "semantic_136",
+        "name": "Hamlet Said",
+        "content": "But yet do I believe\n The origin and commencement of his grief\n Sprung from neglected love.—How now, Ophelia? You need not tell us what Lord Hamlet said;\n We heard it all.—My lord, do as you please,\n But, if you hold it fit, after the play\n Let his queen-mother all alone entreat him\n To show his grief. Let her be round with him;\n And I’ll be placed, so please you, in the ear\n Of all their conference. If she find him not,\n To England send him, or confine him where\n Your wisdom best shall think. It shall be so. Madness in great ones must not unwatched go. Enter Hamlet and three of the Players. Speak the speech, I pray you, as I pronounced\n it to you, trippingly on the tongue; but if you mouth\n it, as many of our players do, I had as lief the\n town-crier spoke my lines. Nor do not saw the air\n too much with your hand, thus, but use all gently;\n for in the very torrent, tempest, and, as I may say,\n whirlwind of your passion, you must acquire and\n beget a temperance that may give it smoothness. O,",
+        "summary": "You need not tell us what Lord Hamlet said;\n We heard it all.—My lord, do as you please,\n But, if you hold it fit, after the play\n Let his queen-mother all alone entreat him\n To show his grief. Speak the speech, I pray you, as I pronounced\n it to you, trippingly on the tongue; but if you mouth\n it, as many of our players do, I had as lief the\n town-crier spoke my lines. Nor do not saw the air\n too much with your hand, thus, but use all gently;\n for in the very torrent, tempest, and, as I may say,\n whirlwind of your passion, you must acquire and\n beget a temperance that may give it smoothness.",
+        "keywords": [
+          "hamlet said",
+          "origin commencement grief",
+          "ophelia",
+          "crier spoke lines",
+          "madness"
+        ],
+        "actId": 3,
+        "sceneId": 8,
+        "actName": "ACT 3",
+        "sceneName": "Scene 1",
+        "topicPath": "ACT 3/Scene 1/Hamlet Said",
+        "retrievalScore": 0.7947,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "german": {
+        "chunkId": "GER_0290",
+        "correspondingChunk": "ENG_0290",
+        "nodeId": "semantic_290",
+        "name": "Hamlet Für Was",
+        "content": "Ich frage, wie der Mann heißt, für den du das Grab machst? Todtengräber. Ich mach es für keinen Mann, Herr. Hamlet. Für was für eine Frau dann? Todtengräber. Auch für keine Frau. Hamlet. Wer soll dann darinn begraben werden? Todtengräber. Eine die in ihrem Leben ein Weibsbild war, aber, Gott tröst ihre\nSeele! nun ist sie todt. Hamlet. Was für ein determinierter Schurke das ist! In was für einer\nSprache müssen wir mit ihm reden, daß er uns nicht mit\nZweydeutigkeiten stumm mache? Bey Gott, Horatio, ich habe diese\ndrey Jahre her beobachtet, daß die Welt so spizfündig worden ist,\ndaß der Bauer seinen plumpen Wiz eben so hoch springen und so\nseltsame Gambaden machen läßt, als der wizigste von unsern\nHofschranzen--Wie lange bist du schon ein Todtengräber? Todtengräber. Unter allen Tagen im Jahr kam ich an dem Tag dazu, da unser\nverstorbner König Hamlet über den Fortinbras Meister wurde. Hamlet. Wie lang ist das? Todtengräber. Könnt ihr das nicht sagen? Das kan ein jeder Narr sagen: Es war\nauf den nemlichen Tag, da der junge Hamlet auf die Welt kam, der\nnärrisch wurde, und nach England geschikt worden ist. Hamlet. Was, zum Henker! und warum wurde er nach England geschikt? Todtengräber. Warum? weil er närrisch worden ist; er soll dort seine fünf Sinnen\nwieder kriegen; oder wenn er sie nicht wieder kriegt, so hat es\ndort nicht viel zu bedeuten. Hamlet. Warum das? Todtengräber. Man wird es nicht an ihm gewahr werden; denn dort sind die Leute\neben so närrisch als er.",
+        "summary": "Was für ein determinierter Schurke das ist! Bey Gott, Horatio, ich habe diese\ndrey Jahre her beobachtet, daß die Welt so spizfündig worden ist,\ndaß der Bauer seinen plumpen Wiz eben so hoch springen und so\nseltsame Gambaden machen läßt, als der wizigste von unsern\nHofschranzen--Wie lange bist du schon ein Todtengräber? Das kan ein jeder Narr sagen: Es war\nauf den nemlichen Tag, da der junge Hamlet auf die Welt kam, der\nnärrisch wurde, und nach England geschikt worden ist.",
+        "keywords": [
+          "hamlet für was",
+          "verstorbner könig hamlet",
+          "todtengräber man wird",
+          "england geschikt todtengräber",
+          "weil er närrisch"
+        ],
+        "actId": 5,
+        "sceneId": 19,
+        "actName": "Fünfter Aufzug.",
+        "sceneName": "Erste Scene.",
+        "topicPath": "Fünfter Aufzug./Erste Scene./Hamlet Für Was",
+        "retrievalScore": 0.7863,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "dimensions": [
+        {
+          "id": "semantic",
+          "label": "Semantic",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "chronology",
+          "label": "Chronology",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "emotion",
+          "label": "Emotion",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "style",
+          "label": "Style",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "metaphor",
+          "label": "Metaphor",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "tone",
+          "label": "Tone",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "voice",
+          "label": "Character Voice",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "cultural",
+          "label": "Cultural",
+          "english": 0,
+          "german": 0
+        }
+      ],
+      "differences": [],
+      "summary": "LLM analysis has not been run yet.",
+      "finalConclusion": "Run the comparison batch to fill dimension scores and highlights."
+    },
+    {
+      "id": "pair-4",
+      "pairId": 4,
+      "label": "Enter Hamlet Mother / Prinz Hamlet Sagte",
+      "englishQuery": "Why is Hamlet disturbed by his mother's marriage to Claudius?",
+      "germanQuery": "Warum empfindet Hamlet die Heirat seiner Mutter mit Claudius als verstörend?",
+      "structurallyAligned": false,
+      "retrievalSimilarity": 0.7562,
+      "semanticDifference": "Different topical focus: English 'Enter Hamlet Mother' vs German 'Prinz Hamlet Sagte'",
+      "emotionalDifference": "English emotional cues: fear; German emotional cues: liebe",
+      "translationDifference": "Retrieved chunks are not aligned translation partners; query routing surfaced different scene segments",
+      "english": {
+        "chunkId": "ENG_0189",
+        "correspondingChunk": "GER_0189",
+        "nodeId": "semantic_189",
+        "name": "Enter Hamlet Mother",
+        "content": "Pray you, be round with him. , within Mother, mother, mother! I’ll warrant you. Fear me not. Withdraw,\n I hear him coming. Enter Hamlet. Now, mother, what’s the matter? Hamlet, thou hast thy father much offended. Mother, you have my father much offended.",
+        "summary": "I’ll warrant you. Hamlet, thou hast thy father much offended. Mother, you have my father much offended.",
+        "keywords": [
+          "enter hamlet mother",
+          "hamlet mother matter",
+          "thy father offended",
+          "hamlet thou",
+          "pray round mother"
+        ],
+        "actId": 3,
+        "sceneId": 10,
+        "actName": "ACT 3",
+        "sceneName": "Scene 3",
+        "topicPath": "ACT 3/Scene 3/Enter Hamlet Mother",
+        "retrievalScore": 0.8004,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "german": {
+        "chunkId": "GER_0153",
+        "correspondingChunk": "ENG_0153",
+        "nodeId": "semantic_153",
+        "name": "Prinz Hamlet Sagte",
+        "content": "Und doch glaub ich noch immer, daß\nverachtete Liebe die erste Quelle und Ursach dieser Schwermuth\ngewesen--Wie steht’s, Ophelia? Ihr habt nicht nöthig uns zu\nerzählen, was Prinz Hamlet sagte; wir haben alles gehört--\n(Ophelia geht ab.) Gnädigster Herr, handelt nach euerm Gefallen; wenn es euch aber\nnicht entgegen ist, so laßt die Königin seine Frau Mutter nach der\nComödie in einer geheimen Unterredung einen Versuch machen, die\nUrsache seines Grams von ihm zu erfahren; laßt sie mit der Sprache\ngerad gegen ihn herausgehen; und ich will mich, wenn ihr’s für gut\nanseht, an einen Ort stellen, wo ich alles was sie mit einander\nreden, hören kan. Will er sich nicht erklären, so schikt ihn nach\nEngland, oder verwahrt ihn sonst irgendwo; was eure Klugheit das\nrathsamste finden wird. König. Wir wollen es so machen--Wahnwiz ist an den Grossen allemal was\nverdächtiges das man nicht unbewacht lassen soll. (Sie gehen ab.) (Hamlet mit zween oder dreyen Schauspielern tritt auf.) Hamlet.",
+        "summary": "Ihr habt nicht nöthig uns zu\nerzählen, was Prinz Hamlet sagte; wir haben alles gehört--\n(Ophelia geht ab.) Gnädigster Herr, handelt nach euerm Gefallen; wenn es euch aber\nnicht entgegen ist, so laßt die Königin seine Frau Mutter nach der\nComödie in einer geheimen Unterredung einen Versuch machen, die\nUrsache seines Grams von ihm zu erfahren; laßt sie mit der Sprache\ngerad gegen ihn herausgehen; und ich will mich, wenn ihr’s für gut\nanseht, an einen Ort stellen, wo ich alles was sie mit einander\nreden, hören kan. Will er sich nicht erklären, so schikt ihn nach\nEngland, oder verwahrt ihn sonst irgendwo; was eure Klugheit das\nrathsamste finden wird. Wir wollen es so machen--Wahnwiz ist an den Grossen allemal was\nverdächtiges das man nicht unbewacht lassen soll.",
+        "keywords": [
+          "prinz hamlet sagte",
+          "verachtete liebe",
+          "ursach dieser schwermuth",
+          "ihn nach england",
+          "wie steht ophelia"
+        ],
+        "actId": 3,
+        "sceneId": 9,
+        "actName": "Dritter Aufzug.",
+        "sceneName": "Dritte Scene.",
+        "topicPath": "Dritter Aufzug./Dritte Scene./Prinz Hamlet Sagte",
+        "retrievalScore": 0.798,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "dimensions": [
+        {
+          "id": "semantic",
+          "label": "Semantic",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "chronology",
+          "label": "Chronology",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "emotion",
+          "label": "Emotion",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "style",
+          "label": "Style",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "metaphor",
+          "label": "Metaphor",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "tone",
+          "label": "Tone",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "voice",
+          "label": "Character Voice",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "cultural",
+          "label": "Cultural",
+          "english": 0,
+          "german": 0
+        }
+      ],
+      "differences": [],
+      "summary": "LLM analysis has not been run yet.",
+      "finalConclusion": "Run the comparison batch to fill dimension scores and highlights."
+    },
+    {
+      "id": "pair-5",
+      "pairId": 5,
+      "label": "Hamlet Ghost / Hamlet Ermordung Geist",
+      "englishQuery": "What does the ghost reveal to Hamlet, and how does it influence his actions?",
+      "germanQuery": "Was offenbart der Geist Hamlet, und wie beeinflusst dies sein weiteres Handeln?",
+      "structurallyAligned": false,
+      "retrievalSimilarity": 0.8519,
+      "semanticDifference": "Different topical focus: English 'Hamlet Ghost' vs German 'Hamlet Ermordung Geist'",
+      "emotionalDifference": "English emotional cues: death, love; German emotional cues: liebe, rache",
+      "translationDifference": "Retrieved chunks are not aligned translation partners; query routing surfaced different scene segments",
+      "english": {
+        "chunkId": "ENG_0053",
+        "correspondingChunk": "GER_0053",
+        "nodeId": "semantic_53",
+        "name": "Hamlet Ghost",
+        "content": "Haste me to know ’t, that I, with wings as swift\n\n59\nHamlet\nACT 1. SC. 5\nGHOST\nHAMLET\nGHOST\n As meditation or the thoughts of love,\n May sweep to my revenge. I find thee apt;\n And duller shouldst thou be than the fat weed\n That roots itself in ease on Lethe wharf,\n Wouldst thou not stir in this. Now, Hamlet, hear. ’Tis given out that, sleeping in my orchard,\n A serpent stung me. So the whole ear of Denmark\n Is by a forgèd process of my death\n Rankly abused. But know, thou noble youth,\n The serpent that did sting thy father’s life\n Now wears his crown. O, my prophetic soul! My uncle! Ay, that incestuous, that adulterate beast,\n With witchcraft of his wits, with traitorous gifts—\n O wicked wit and gifts, that have the power\n So to seduce!—won to his shameful lust\n The will of my most seeming-virtuous queen. O Hamlet, what a falling off was there! From me, whose love was of that dignity\n That it went hand in hand even with the vow\n I made to her in marriage, and to decline\n Upon a wretch whose natural gifts were poor\n To those of mine. But virtue, as it never will be moved,\n Though lewdness court it in a shape of heaven,\n So, lust, though to a radiant angel linked,\n Will sate itself in a celestial bed\n And prey on garbage. But soft, methinks I scent the morning air. Brief let me be.",
+        "summary": "Ay, that incestuous, that adulterate beast,\n With witchcraft of his wits, with traitorous gifts—\n O wicked wit and gifts, that have the power\n So to seduce!—won to his shameful lust\n The will of my most seeming-virtuous queen. From me, whose love was of that dignity\n That it went hand in hand even with the vow\n I made to her in marriage, and to decline\n Upon a wretch whose natural gifts were poor\n To those of mine. But virtue, as it never will be moved,\n Though lewdness court it in a shape of heaven,\n So, lust, though to a radiant angel linked,\n Will sate itself in a celestial bed\n And prey on garbage.",
+        "keywords": [
+          "hamlet ghost",
+          "swift 59 hamlet",
+          "shameful lust virtuous",
+          "orchard serpent stung",
+          "haste know"
+        ],
+        "actId": 1,
+        "sceneId": 5,
+        "actName": "ACT 1",
+        "sceneName": "Scene 5",
+        "topicPath": "ACT 1/Scene 5/Hamlet Ghost",
+        "retrievalScore": 0.8131,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "german": {
+        "chunkId": "GER_0051",
+        "correspondingChunk": "ENG_0051",
+        "nodeId": "semantic_51",
+        "name": "Hamlet Ermordung Geist",
+        "content": "(Verwandelt sich in einen entferntern Theil der Terrasse.) (Der Geist und Hamlet treten wieder auf.) Hamlet. Wohin willt du mich fuhren? Rede; ich gehe nicht weiter. Geist. Höre mich an. Hamlet. Das will ich. Geist. Die Stunde rükt nah herbey, da ich in peinigende Schwefel-Flammen\nzurükkehren muß. Hamlet. Du daurst mich, armer Geist! Geist. Bedaure mich nicht, sondern höre aufmerksam an, was ich dir\nentdeken werde. Hamlet. Rede, ich bin schuldig, zu hören--\nGeist. Und zu rächen, was du hören wirst. Hamlet. Was? Geist. Ich bin der Geist deines Vaters, verurtheilt eine bestimmte Zeit\nbey Nacht herum zu irren, und den Tag über eng eingeschlossen in\nFlammen zu schmachten, bis die Sünden meines irdischen Lebens\ndurchs Feuer ausgebrannt und weggefeget sind. Wäre mirs nicht\nverboten, die Geheimnisse meines Gefängnisses zu entdeken, ich\nkönnte eine Erzählung machen, wovon das leichteste Wort deine Seele\nzermalmen, dein Blut erstarren, deine zwey Augen, wie Sterne, aus\nihren Kreisen taumeln, deine krause dichtgedrängte Loken trennen,\nund jedes einzelne Haar wie die Stacheln des ergrimmten Igels\nemporstehen machen würde: Aber diese Scenen der Ewigkeit sind nicht\nfür Ohren von Fleisch und Blut--Horch, horch, o horch auf! Wenn du\njemals Liebe zu deinem Vater getragen hast--\nHamlet. O Himmel! Geist. So räche seine schändliche, höchst unnatürliche Ermordung. Hamlet. Ermordung? Geist. Jeder Mord ist höchst schändlich; aber dieser ist mehr als\nschändlich, unnatürlich, und unglaublich. Hamlet. Eile, mir den Thäter zu nennen, damit ich schneller als die Flügel\nder Betrachtung oder die Gedanken der Liebe, zu meiner Rache fliege. Geist. So bist du, wie ich dich haben will; auch müßtest du gefühlloser\nseyn, als das fette Unkraut, das seine Wurzeln ungestört an Lethe’s\nWerft verbreitet, wenn du nicht in diese Bewegung kämest. Nun,\nHamlet, höre.",
+        "summary": "(Der Geist und Hamlet treten wieder auf.) Ich bin der Geist deines Vaters, verurtheilt eine bestimmte Zeit\nbey Nacht herum zu irren, und den Tag über eng eingeschlossen in\nFlammen zu schmachten, bis die Sünden meines irdischen Lebens\ndurchs Feuer ausgebrannt und weggefeget sind. Wäre mirs nicht\nverboten, die Geheimnisse meines Gefängnisses zu entdeken, ich\nkönnte eine Erzählung machen, wovon das leichteste Wort deine Seele\nzermalmen, dein Blut erstarren, deine zwey Augen, wie Sterne, aus\nihren Kreisen taumeln, deine krause dichtgedrängte Loken trennen,\nund jedes einzelne Haar wie die Stacheln des ergrimmten Igels\nemporstehen machen würde: Aber diese Scenen der Ewigkeit sind nicht\nfür Ohren von Fleisch und Blut--Horch, horch, o horch auf!",
+        "keywords": [
+          "hamlet ermordung geist",
+          "geist und hamlet",
+          "wirst hamlet was",
+          "zurükkehren muß hamlet",
+          "sünden meines irdischen"
+        ],
+        "actId": 1,
+        "sceneId": 5,
+        "actName": "Erster Aufzug.",
+        "sceneName": "Achte Scene.",
+        "topicPath": "Erster Aufzug./Achte Scene./Hamlet Ermordung Geist",
+        "retrievalScore": 0.8287,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "dimensions": [
+        {
+          "id": "semantic",
+          "label": "Semantic",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "chronology",
+          "label": "Chronology",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "emotion",
+          "label": "Emotion",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "style",
+          "label": "Style",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "metaphor",
+          "label": "Metaphor",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "tone",
+          "label": "Tone",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "voice",
+          "label": "Character Voice",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "cultural",
+          "label": "Cultural",
+          "english": 0,
+          "german": 0
+        }
+      ],
+      "differences": [],
+      "summary": "LLM analysis has not been run yet.",
+      "finalConclusion": "Run the comparison batch to fill dimension scores and highlights."
+    },
+    {
+      "id": "pair-6",
+      "pairId": 6,
+      "label": "Beating Hamlet Act / Gnädigster Prinz Hamlet",
+      "englishQuery": "How does Hamlet greet and speak to Horatio when they meet again in Act 1?",
+      "germanQuery": "Wie begegnet Hamlet Horatio, als sie sich im ersten Aufzug wiedersehen?",
+      "structurallyAligned": false,
+      "retrievalSimilarity": 0.8104,
+      "semanticDifference": "Different topical focus: English 'Beating Hamlet Act' vs German 'Gnädigster Prinz Hamlet'",
+      "emotionalDifference": "English emotional cues: fear; German emotional cues: none",
+      "translationDifference": "Retrieved chunks are not aligned translation partners; query routing surfaced different scene segments",
+      "english": {
+        "chunkId": "ENG_0004",
+        "correspondingChunk": "GER_0004",
+        "nodeId": "semantic_4",
+        "name": "Beating Hamlet Act",
+        "content": "Sit down awhile,\n And let us once again assail your ears,\n That are so fortified against our story,\n What we have two nights seen. Well, sit we down,\n And let us hear Barnardo speak of this. Last night of all,\n When yond same star that’s westward from the pole\n Had made his course t’ illume that part of heaven\n Where now it burns, Marcellus and myself,\n The bell then beating one—\n\nHamlet\nACT 1. SC. 1\nMARCELLUS\nBARNARDO\nMARCELLUS\nBARNARDO\nHORATIO\nBARNARDO\nMARCELLUS\nHORATIO\nMARCELLUS\nBARNARDO\nHORATIO\nGhost exits. MARCELLUS\nBARNARDO\nHORATIO\nEnter Ghost. Peace, break thee off! Look where it comes again. In the same figure like the King that’s dead. , to Horatio\n \n Thou art a scholar. Speak to it, Horatio. Looks he not like the King? Mark it, Horatio. Most like. It harrows me with fear and wonder. It would be spoke to. Speak to it, Horatio. What art thou that usurp’st this time of night,\n Together with that fair and warlike form\n In which the majesty of buried Denmark\n Did sometimes march? By heaven, I charge thee,\n speak. It is offended. See, it stalks away. Stay! speak! speak! I charge thee, speak! ’Tis gone and will not answer. How now, Horatio, you tremble and look pale. Is not this something more than fantasy? What think you on ’t? Before my God, I might not this believe\n Without the sensible and true avouch\n Of mine own eyes. Hamlet\nACT 1. SC. 1\nHORATIO\nMARCELLUS\nHORATIO\nMARCELLUS\nHORATIO\nMARCELLUS \n Is it not like the King? As thou art to thyself. Such was the very armor he had on\n When he the ambitious Norway combated. So frowned he once when, in an angry parle,\n He smote the sledded Polacks on the ice.",
+        "summary": "Last night of all,\n When yond same star that’s westward from the pole\n Had made his course t’ illume that part of heaven\n Where now it burns, Marcellus and myself,\n The bell then beating one—\n\nHamlet\nACT 1. Speak to it, Horatio. 1\nHORATIO\nMARCELLUS\nHORATIO\nMARCELLUS\nHORATIO\nMARCELLUS \n Is it not like the King?",
+        "keywords": [
+          "beating hamlet act",
+          "ghost exits marcellus",
+          "king dead horatio",
+          "barnardo speak",
+          "polacks"
+        ],
+        "actId": 1,
+        "sceneId": 1,
+        "actName": "ACT 1",
+        "sceneName": "Scene 1",
+        "topicPath": "ACT 1/Scene 1/Beating Hamlet Act",
+        "retrievalScore": 0.8141,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "german": {
+        "chunkId": "GER_0042",
+        "correspondingChunk": "ENG_0042",
+        "nodeId": "semantic_42",
+        "name": "Gnädigster Prinz Hamlet",
+        "content": "(Horatio, Bernardo und Marcellus treten auf.) Horatio. Heil, Gnädigster Prinz! Hamlet. Ich erfreue mich, euch wohl zu sehen--Ihr seyd Horatio, oder ich\nvergesse mich selbst. Horatio. Ich bin Horatio, Gnädiger Herr, und euer demüthiger Diener auf ewig. Hamlet. Sir, mein guter Freund; das soll künftig das Verhältniß unter uns\nseyn. Und was führt euch von Wittenberg hieher, Horatio?--Ist das\nnicht Marcellus? --\nMarcellus. Ja, Gnädigster Herr. Hamlet. Ich bin erfreut euch zu sehen; guten Morgen, Sir\n(zu Bernardo)\n--Aber, im Ernste, Horatio, was bringt euch von Wittenberg hieher? Horatio. Ein Anstoß von Landstreicherey, mein Gnädigster Herr. Hamlet.",
+        "summary": "Ich bin Horatio, Gnädiger Herr, und euer demüthiger Diener auf ewig. Und was führt euch von Wittenberg hieher, Horatio?--Ist das\nnicht Marcellus? Ich bin erfreut euch zu sehen; guten Morgen, Sir\n(zu Bernardo)\n--Aber, im Ernste, Horatio, was bringt euch von Wittenberg hieher?",
+        "keywords": [
+          "gnädigster prinz hamlet",
+          "herr hamlet ich",
+          "demüthiger diener auf",
+          "marcellus treten auf",
+          "horatio ist das"
+        ],
+        "actId": 1,
+        "sceneId": 3,
+        "actName": "Erster Aufzug.",
+        "sceneName": "Vierte Scene.",
+        "topicPath": "Erster Aufzug./Vierte Scene./Gnädigster Prinz Hamlet",
+        "retrievalScore": 0.8446,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "dimensions": [
+        {
+          "id": "semantic",
+          "label": "Semantic",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "chronology",
+          "label": "Chronology",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "emotion",
+          "label": "Emotion",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "style",
+          "label": "Style",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "metaphor",
+          "label": "Metaphor",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "tone",
+          "label": "Tone",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "voice",
+          "label": "Character Voice",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "cultural",
+          "label": "Cultural",
+          "english": 0,
+          "german": 0
+        }
+      ],
+      "differences": [],
+      "summary": "LLM analysis has not been run yet.",
+      "finalConclusion": "Run the comparison batch to fill dimension scores and highlights."
+    },
+    {
+      "id": "pair-7",
+      "pairId": 7,
+      "label": "Hamlet Dear Brother / Capitol Umgebracht Brutus",
+      "englishQuery": "How does Claudius present and justify his accession to the throne?",
+      "germanQuery": "Wie stellt Claudius seine Thronbesteigung dar und wie rechtfertigt er sie?",
+      "structurallyAligned": false,
+      "retrievalSimilarity": 0.7574,
+      "semanticDifference": "Different topical focus: English 'Hamlet Dear Brother' vs German 'Capitol Umgebracht Brutus'",
+      "emotionalDifference": "English emotional cues: death, sorrow; German emotional cues: none",
+      "translationDifference": "Retrieved chunks are not aligned translation partners; query routing surfaced different scene segments",
+      "english": {
+        "chunkId": "ENG_0012",
+        "correspondingChunk": "GER_0012",
+        "nodeId": "semantic_12",
+        "name": "Hamlet Dear Brother",
+        "content": "But look, the morn in russet mantle clad\n Walks o’er the dew of yon high eastward hill. Break we our watch up, and by my advice\n Let us impart what we have seen tonight\n Unto young Hamlet; for, upon my life,\n This spirit, dumb to us, will speak to him. Do you consent we shall acquaint him with it\n As needful in our loves, fitting our duty? Let’s do ’t, I pray, and I this morning know\n Where we shall find him most convenient. 21\nHamlet\nACT 1. SC. 2\nKING\nFlourish. Enter Claudius, King of Denmark, Gertrude the\nQueen, the Council, as Polonius, and his son Laertes,\nHamlet, with others, among them Voltemand and\nCornelius. Though yet of Hamlet our dear brother’s death\n The memory be green, and that it us befitted\n To bear our hearts in grief, and our whole kingdom\n To be contracted in one brow of woe,\n Yet so far hath discretion fought with nature\n That we with wisest sorrow think on him\n Together with remembrance of ourselves. Therefore our sometime sister, now our queen,\n Th’ imperial jointress to this warlike state,\n Have we (as ’twere with a defeated joy,\n With an auspicious and a dropping eye,\n With mirth in funeral and with dirge in marriage,\n In equal scale weighing delight and dole)\n Taken to wife. Nor have we herein barred\n Your better wisdoms, which have freely gone\n With this affair along. For all, our thanks. Now follows that you know.",
+        "summary": "Break we our watch up, and by my advice\n Let us impart what we have seen tonight\n Unto young Hamlet; for, upon my life,\n This spirit, dumb to us, will speak to him. Though yet of Hamlet our dear brother’s death\n The memory be green, and that it us befitted\n To bear our hearts in grief, and our whole kingdom\n To be contracted in one brow of woe,\n Yet so far hath discretion fought with nature\n That we with wisest sorrow think on him\n Together with remembrance of ourselves. Therefore our sometime sister, now our queen,\n Th’ imperial jointress to this warlike state,\n Have we (as ’twere with a defeated joy,\n With an auspicious and a dropping eye,\n With mirth in funeral and with dirge in marriage,\n In equal scale weighing delight and dole)\n Taken to wife.",
+        "keywords": [
+          "hamlet dear brother",
+          "hamlet voltemand cornelius",
+          "denmark gertrude queen",
+          "queen council polonius",
+          "claudius"
+        ],
+        "actId": 1,
+        "sceneId": 1,
+        "actName": "ACT 1",
+        "sceneName": "Scene 1",
+        "topicPath": "ACT 1/Scene 1/Hamlet Dear Brother",
+        "retrievalScore": 0.7411,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "german": {
+        "chunkId": "GER_0184",
+        "correspondingChunk": "ENG_0184",
+        "nodeId": "semantic_184",
+        "name": "Capitol Umgebracht Brutus",
+        "content": "Nun, mein Herr; ihr spieltet ja ehmals auch Comödien auf der\nUniversität, sagtet ihr? Polonius. Das that ich, Gnädiger Herr, und man hielt mich für einen guten\nSchauspieler. Hamlet. Und was machtet ihr für Rollen? Polonius. Ich machte den Julius Cäsar, ich wurde im Capitol umgebracht;\nBrutus brachte mich um. Hamlet. Das war brutal von ihm gehandelt, ein solches Capital-Kalb da\numzubringen--Sind die Comödianten fertig?",
+        "summary": "Polonius. Das that ich, Gnädiger Herr, und man hielt mich für einen guten\nSchauspieler. Und was machtet ihr für Rollen?",
+        "keywords": [
+          "capitol umgebracht brutus",
+          "guten schauspieler hamlet",
+          "cäsar ich wurde",
+          "machte den julius",
+          "sagtet ihr polonius"
+        ],
+        "actId": 3,
+        "sceneId": 10,
+        "actName": "Dritter Aufzug.",
+        "sceneName": "Fünfte Scene.",
+        "topicPath": "Dritter Aufzug./Fünfte Scene./Capitol Umgebracht Brutus",
+        "retrievalScore": 0.7581,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "dimensions": [
+        {
+          "id": "semantic",
+          "label": "Semantic",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "chronology",
+          "label": "Chronology",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "emotion",
+          "label": "Emotion",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "style",
+          "label": "Style",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "metaphor",
+          "label": "Metaphor",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "tone",
+          "label": "Tone",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "voice",
+          "label": "Character Voice",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "cultural",
+          "label": "Cultural",
+          "english": 0,
+          "german": 0
+        }
+      ],
+      "differences": [],
+      "summary": "LLM analysis has not been run yet.",
+      "finalConclusion": "Run the comparison batch to fill dimension scores and highlights."
+    },
+    {
+      "id": "pair-8",
+      "pairId": 8,
+      "label": "Young Fortinbras / Oßrik Tritt Auf",
+      "englishQuery": "How does Claudius deal with the political threat posed by Fortinbras?",
+      "germanQuery": "Wie begegnet Claudius der politischen Bedrohung durch Fortinbras?",
+      "structurallyAligned": false,
+      "retrievalSimilarity": 0.7827,
+      "semanticDifference": "Different topical focus: English 'Young Fortinbras' vs German 'Oßrik Tritt Auf'",
+      "emotionalDifference": "English emotional cues: death; German emotional cues: none",
+      "translationDifference": "Retrieved chunks are not aligned translation partners; query routing surfaced different scene segments",
+      "english": {
+        "chunkId": "ENG_0013",
+        "correspondingChunk": "GER_0013",
+        "nodeId": "semantic_13",
+        "name": "Young Fortinbras",
+        "content": "Young Fortinbras,\n Holding a weak supposal of our worth\n Or thinking by our late dear brother’s death\n Our state to be disjoint and out of frame,\n Colleaguèd with this dream of his advantage,\n He hath not failed to pester us with message\n Importing the surrender of those lands\n Lost by his father, with all bonds of law,\n To our most valiant brother—so much for him.",
+        "summary": "Young Fortinbras,\n Holding a weak supposal of our worth\n Or thinking by our late dear brother’s death\n Our state to be disjoint and out of frame,\n Colleaguèd with this dream of his advantage,\n He hath not failed to pester us with message\n Importing the surrender of those lands\n Lost by his father, with all bonds of law,\n To our most valiant brother—so much for him.",
+        "keywords": [
+          "young fortinbras",
+          "importing surrender lands",
+          "weak supposal worth",
+          "valiant brother",
+          "brother death state"
+        ],
+        "actId": 1,
+        "sceneId": 1,
+        "actName": "ACT 1",
+        "sceneName": "Scene 1",
+        "topicPath": "ACT 1/Scene 1/Young Fortinbras",
+        "retrievalScore": 0.7618,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "german": {
+        "chunkId": "GER_0302",
+        "correspondingChunk": "ENG_0302",
+        "nodeId": "semantic_302",
+        "name": "Oßrik Tritt Auf",
+        "content": "(Oßrik tritt auf.) Oßrik. Der junge Fortinbras, welcher siegreich von Pohlen zurük kommt,\nbeehrt die Abgesandten von England mit diesem kriegerischen Gruß.",
+        "summary": "(Oßrik tritt auf.) Oßrik. Der junge Fortinbras, welcher siegreich von Pohlen zurük kommt,\nbeehrt die Abgesandten von England mit diesem kriegerischen Gruß.",
+        "keywords": [
+          "oßrik tritt auf",
+          "oßrik der junge",
+          "der junge fortinbras",
+          "abgesandten von england",
+          "kriegerischen gruß"
+        ],
+        "actId": 5,
+        "sceneId": 20,
+        "actName": "Fünfter Aufzug.",
+        "sceneName": "Sechste Scene.",
+        "topicPath": "Fünfter Aufzug./Sechste Scene./Oßrik Tritt Auf",
+        "retrievalScore": 0.7787,
+        "matchedConcepts": [],
+        "highlights": [],
+        "reasoning": "Pending LLM analysis.",
+        "scores": {
+          "semantic": 0,
+          "chronology": 0,
+          "emotion": 0,
+          "style": 0,
+          "metaphor": 0,
+          "tone": 0,
+          "voice": 0,
+          "cultural": 0
+        }
+      },
+      "dimensions": [
+        {
+          "id": "semantic",
+          "label": "Semantic",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "chronology",
+          "label": "Chronology",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "emotion",
+          "label": "Emotion",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "style",
+          "label": "Style",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "metaphor",
+          "label": "Metaphor",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "tone",
+          "label": "Tone",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "voice",
+          "label": "Character Voice",
+          "english": 0,
+          "german": 0
+        },
+        {
+          "id": "cultural",
+          "label": "Cultural",
+          "english": 0,
+          "german": 0
+        }
+      ],
+      "differences": [],
+      "summary": "LLM analysis has not been run yet.",
+      "finalConclusion": "Run the comparison batch to fill dimension scores and highlights."
+    }
+  ]
+}

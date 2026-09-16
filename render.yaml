@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: hamlet-translation-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_COMPARISON_MODEL
+        value: gpt-4o
+      - key: DATA_DIR
+        value: /app/deploy/data
+      - key: TOKENIZERS_PARALLELISM
+        value: false
+    autoDeploy: true
