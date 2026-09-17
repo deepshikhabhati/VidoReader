@@ -114,6 +114,17 @@ class EmbeddingRetrievalComparisonResponse(BaseModel):
     analysis: EmbeddingComparisonResponse
 
 
+class QueryRequest2(BaseModel):
+    query: str
+    source: str
+    german: bool = False
+    language: str = ""
+
+
+def _openai_model() -> str:
+    return os.environ.get("OPENAI_COMPARISON_MODEL") or os.environ.get("OPENAI_MODEL") or "gpt-4o"
+
+
 def _require_openai() -> OpenAI:
     if openai_client is None:
         raise HTTPException(
@@ -276,6 +287,62 @@ async def compare_embedding_retrieval_api(request: EmbeddingRetrievalComparisonR
         raise HTTPException(status_code=404, detail=str(error)) from error
     except Exception as error:
         raise HTTPException(status_code=500, detail=str(error)) from error
+
+
+@app.post("/ask-ai/")
+@app.post("/ask-ai")
+async def ask_ai(request: QueryRequest2):
+    """Answer a query using the provided source context (same contract as app.py)."""
+    client = _require_openai()
+    query = request.query.strip()
+    source_knowledge = request.source
+    is_german = request.german or request.language.strip().lower() in {
+        "german",
+        "de",
+        "deutsch",
+    }
+
+    if not query:
+        raise HTTPException(status_code=400, detail="query is required")
+
+    if is_german:
+        user_prompt = f"""Using the German context below, answer the query as a short summary in both English and German.
+Keep each language to 2–3 sentences.
+
+Return exactly this format:
+English:
+<English summary>
+
+German:
+<German summary>
+
+Context:
+{source_knowledge}
+
+Query: {query}"""
+    else:
+        user_prompt = f"""Using the context below, answer the query briefly (2–3 sentences max).
+
+Context:
+{source_knowledge}
+
+Query: {query}"""
+
+    try:
+        response = client.chat.completions.create(
+            model=_openai_model(),
+            temperature=0.3,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": user_prompt},
+            ],
+        )
+        content = response.choices[0].message.content or ""
+        return {"query": query, "response": content}
+    except HTTPException:
+        raise
+    except Exception as error:
+        return JSONResponse(status_code=500, content={"error": str(error)})
 
 
 @app.post("/compare-embedding-batch")
