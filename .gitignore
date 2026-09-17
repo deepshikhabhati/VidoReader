@@ -18,6 +18,8 @@ Full*.json
 !Full_reduced_structured_with_embeddings.json
 PGDM_*.json
 hamlet_version*.json
+!deploy/data/**
+!deploy/data/**/*
 german.json
 english.json
 *.log

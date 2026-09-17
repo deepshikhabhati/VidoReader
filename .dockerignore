@@ -18,3 +18,4 @@ german.json
 english.json
 *.log
 .env
+!deploy/data/**

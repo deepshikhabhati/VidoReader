@@ -34,6 +34,20 @@ if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))
 
 from llm_comparison import analyze_comparison_results, compare_embedding_results
+from runtime_data import (
+    data_path,
+    get_clip_bundle,
+    get_content_embeddings,
+    get_content_embeddings2,
+    get_content_embeddings3,
+    get_full_reduced_corpus,
+    get_german_hamlet_embeddings,
+    get_hamlet_embeddings1,
+    get_hamlet_embeddings2,
+    get_hamlet_embeddings3,
+    get_image_search_index,
+    queryModel,
+)
 
 class SimilarityResult(BaseModel):
     topic_path: str
@@ -58,10 +72,11 @@ if not api_key:
     print("WARNING: OPENAI_API_KEY is not set. OpenAI endpoints will fail.")
 openai_client = OpenAI(api_key=api_key) if api_key else None
 
-ENGLISH_CHUNKS_JSON_PATH = "english_chunks.json"
-GERMAN_CHUNKS_JSON_PATH = "german_chunks.json"
-COMPARISON_RESULTS_JSON_PATH = "comparison_results.json"
-EMBEDDING_COMPARISON_RESULTS_JSON_PATH = "embedding_comparison_results.json"
+ENGLISH_CHUNKS_JSON_PATH = str(data_path("english_chunks.json"))
+GERMAN_CHUNKS_JSON_PATH = str(data_path("german_chunks.json"))
+COMPARISON_RESULTS_JSON_PATH = str(data_path("comparison_results.json"))
+EMBEDDING_COMPARISON_RESULTS_JSON_PATH = str(data_path("embedding_comparison_results.json"))
+HAMLET_4X4_JSON_PATH = str(data_path("hamlet_4x4_comparison.json"))
 
 app = FastAPI()
 
@@ -117,7 +132,7 @@ def extract_content_and_embeddings(data, parent_path=""):
     
     return results
 
-PDF_FILE_PATH = "History_of_artificial_intelligence.pdf"
+PDF_FILE_PATH = str(data_path("History_of_artificial_intelligence.pdf"))
 
 @app.get("/extract_paragraph/")
 async def extract_paragraph_from_pdf(query: str = ""):
@@ -324,11 +339,6 @@ def transform_data(data):
     
     return transformed
 
-Ai_data = load_Ai_data()
-content_embeddings3 = extract_content_and_embeddings(Ai_data)
-with open('content_embeddings3.json', 'w', encoding='utf-8') as f:
-    json.dump(content_embeddings3, f, ensure_ascii=False, indent=2)
-
 class QueryRequest(BaseModel):
     text: str
     chunks: int
@@ -352,7 +362,7 @@ async def find_similar_AI(query: QueryRequest):
 
         similarities = []
 
-        for item in content_embeddings3:
+        for item in get_content_embeddings3():
             if not item.get('embeddings'):
                 continue
 
@@ -440,23 +450,7 @@ def load_german_hamlet_data():
         raise Exception("German Hamlet embeddings file not found")
 
 
-# Initialize data
-shakespeare_data = load_shakespeare_data()
-shakespeare_data2 = load_shakespeare_data2()
-content_embeddings = extract_content_and_embeddings(shakespeare_data)
-content_embeddings2 = extract_content_and_embeddings(shakespeare_data2)
-with open('content_embeddings.json', 'w', encoding='utf-8') as f:
-    json.dump(content_embeddings, f, ensure_ascii=False, indent=2)
-
-# Initialize Hamlet versions data
-hamlet_data1 = load_hamlet_version1()
-hamlet_data2 = load_hamlet_version2()
-hamlet_data3 = load_hamlet_version3()
-german_hamlet_data = load_german_hamlet_data()
-hamlet_embeddings1 = extract_content_and_embeddings(hamlet_data1)
-hamlet_embeddings2 = extract_content_and_embeddings(hamlet_data2)
-hamlet_embeddings3 = extract_content_and_embeddings(hamlet_data3)
-german_hamlet_embeddings = extract_content_and_embeddings(german_hamlet_data)
+# Hamlet / Shakespeare corpora load lazily via runtime_data.py
 
 # for item in content_embeddings:
 #     print(f"Path: {item['path']}")
@@ -473,7 +467,7 @@ async def find_similar(query: QueryRequest):
         query_embedding = torch.tensor(query_embedding).view(1, -1)  # Ensure (1, 384)
         # Calculate similarity scores
         similarities = []
-        for item in content_embeddings:
+        for item in get_content_embeddings():
            if not item.get('embeddings'):  # Skip if embeddings are None or empty
               continue
 
@@ -516,7 +510,7 @@ async def find_similar_hamlet1(query: QueryRequest):
         
         # Calculate similarity scores
         similarities = []
-        for item in hamlet_embeddings1:
+        for item in get_hamlet_embeddings1():
            if not item.get('embeddings'):  # Skip if embeddings are None or empty
               continue
 
@@ -557,7 +551,7 @@ async def find_similar_german_hamlet(query: QueryRequest):
         query_embedding = torch.tensor(query_embedding).view(1, -1)
 
         similarities = []
-        for item in german_hamlet_embeddings:
+        for item in get_german_hamlet_embeddings():
            if not item.get('embeddings'):
               continue
 
@@ -598,7 +592,7 @@ async def find_similar_hamlet2(query: QueryRequest):
         
         # Calculate similarity scores
         similarities = []
-        for item in hamlet_embeddings2:
+        for item in get_hamlet_embeddings2():
            if not item.get('embeddings'):  # Skip if embeddings are None or empty
               continue
 
@@ -641,7 +635,7 @@ async def find_similar_hamlet3(query: QueryRequest):
         
         # Calculate similarity scores
         similarities = []
-        for item in hamlet_embeddings3:
+        for item in get_hamlet_embeddings3():
            if not item.get('embeddings'):  # Skip if embeddings are None or empty
               continue
 
@@ -800,7 +794,7 @@ async def find_similar2(query: QueryRequest):
         
         # Calculate similarity scores
         similarities = []
-        for item in content_embeddings2:
+        for item in get_content_embeddings2():
            if not item.get('embeddings'):  # Skip if embeddings are None or empty
               continue
 
@@ -987,7 +981,7 @@ async def get_comparison_ui(refresh: bool = False):
             encoding="utf-8",
         )
         return payload
-    except FileNotFoundError as e:
+    except FileNotFoundError as e: 
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -1053,17 +1047,38 @@ German:
         return JSONResponse(status_code=500, content={"error": str(e)})
 
 
+@app.get("/")
+async def health():
+    routes = []
+    for route in app.routes:
+        methods = getattr(route, "methods", None)
+        path = getattr(route, "path", None)
+        if methods and path:
+            for method in sorted(methods - {"HEAD", "OPTIONS"}):
+                routes.append(f"{method} {path}")
+    return {
+        "status": "ok",
+        "service": "vidoreader-api",
+        "deployed_module": "app.py",
+        "data_root": str(data_path(".")),
+        "routes": sorted(routes),
+        "openai_configured": openai_client is not None,
+    }
+
+
+@app.get("/hamlet/4x4-comparison")
+async def get_hamlet_4x4_comparison():
+    path = Path(HAMLET_4X4_JSON_PATH)
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="hamlet_4x4_comparison.json not found")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 class ImageSet(BaseModel):
     images: List[str]  # file paths
     prompt: str
 
-# Load CLIP model
-device = "cuda" if torch.cuda.is_available() else "cpu"
-model, preprocess = clip.load("ViT-B/32", device=device)
-queryModel = SentenceTransformer('all-MiniLM-L6-v2', local_files_only=True)
-
-# --- Full_reduced textbook search (Full_reduced_structured_with_embeddings.json) ---
-FULL_REDUCED_JSON_PATH = "Full_reduced_structured_with_embeddings.json"
+# CLIP + SentenceTransformer load lazily via runtime_data.py
 FULL_REDUCED_LEAF_ONLY = True
 FULL_REDUCED_SCALE_SCORES = True
 
@@ -1149,37 +1164,17 @@ def _fr_extract_flat(data, parent_path: str = "") -> list:
     return results
 
 
-def _load_full_reduced_corpus() -> list:
-    with open(FULL_REDUCED_JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    flat = _fr_extract_flat(data)
-    return [
-        x
-        for x in flat
-        if x.get("embeddings")
-        and (not FULL_REDUCED_LEAF_ONLY or x.get("is_leaf"))
-    ]
-
-
-full_reduced_corpus: list = []
-try:
-    full_reduced_corpus = _load_full_reduced_corpus()
-except FileNotFoundError:
-    print(f"Full_reduced: {FULL_REDUCED_JSON_PATH} not found — /find-similar-full-reduced disabled.")
-except Exception as exc:
-    print(f"Full_reduced load error: {exc}")
-
-
 @app.post("/find-similar-full-reduced", response_model=SimilarityResponse)
 async def find_similar_full_reduced(query: QueryRequest):
     """
     Semantic search over the Full_reduced management textbook
     (precomputed embeddings in Full_reduced_structured_with_embeddings.json).
     """
+    full_reduced_corpus = get_full_reduced_corpus(leaf_only=FULL_REDUCED_LEAF_ONLY)
     if not full_reduced_corpus:
         raise HTTPException(
             status_code=503,
-            detail=f"Corpus not loaded. Place {FULL_REDUCED_JSON_PATH} in the working directory.",
+            detail="Corpus not loaded. Place Full_reduced_structured_with_embeddings.json in DATA_ROOT.",
         )
     try:
         size = max(1, int(query.chunks))
@@ -1258,38 +1253,35 @@ def search(query: str = Query(..., description="Text query for CLIP search")):
     if not query:
         raise HTTPException(status_code=400, detail="Query parameter is required.")
 
-    # Generate CLIP text embeddings
+    index = get_image_search_index()
+    image_embeddings = index["embeddings"]
+    if image_embeddings.size == 0:
+        raise HTTPException(
+            status_code=503,
+            detail="clip_image_embeddings.json not found in DATA_ROOT.",
+        )
+
+    model, _preprocess, device = get_clip_bundle()
     with torch.no_grad():
         text_token = clip.tokenize([query]).to(device)
         text_embedding = model.encode_text(text_token).cpu().numpy()
 
-    # Cosine similarity
     similarities = cosine_similarity(text_embedding, image_embeddings)[0]
     top_k = similarities.argsort()[::-1][:20]
+    image_paths = index["paths"]
+    bird_names = index["folders"]
+    umap_x = index["umap_x"]
+    umap_y = index["umap_y"]
 
-    # Prepare top result
     results = [
-       {
-        "image": image_paths[i].split("images")[-1],
-        "folder":bird_names[i],
-        "umap_x":umap_x[i],
-        "umap_y":umap_y[i],
-        "score": float(similarities[i])  # Convert from NumPy float32 to native float
-       }
-       for i in top_k
+        {
+            "image": image_paths[i].split("images")[-1],
+            "folder": bird_names[i],
+            "umap_x": umap_x[i],
+            "umap_y": umap_y[i],
+            "score": float(similarities[i]),
+        }
+        for i in top_k
     ]
-    top_name = bird_names[top_k[0]]
-    clean_name = top_name.split('.')[-1].replace('_', ' ')
 
-    # Use OpenAI to generate description
-    try:
-        system_msg = "You are an AI model that helps explain why semantic search results match the given user query."
-
-# Prompt explaining why this match was found
-       
-    except Exception as e:
-        bird_description = f"OpenAI error: {str(e)}"
-
-    return JSONResponse({
-        "images": results
-    })
+    return JSONResponse({"images": results})
