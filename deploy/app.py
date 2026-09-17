@@ -33,6 +33,12 @@ GERMAN_CHUNKS_JSON_PATH = DATA_DIR / "german_chunks.json"
 COMPARISON_RESULTS_JSON_PATH = DATA_DIR / "comparison_results.json"
 EMBEDDING_COMPARISON_RESULTS_JSON_PATH = DATA_DIR / "embedding_comparison_results.json"
 HAMLET_4X4_JSON_PATH = DATA_DIR / "hamlet_4x4_comparison.json"
+FULL_REDUCED_JSON_PATH = DATA_DIR / "Full_reduced_structured_with_embeddings.json"
+FULL_REDUCED_LEAF_ONLY = True
+FULL_REDUCED_SCALE_SCORES = True
+
+# IMPORTANT: Render runs this file (deploy/app.py), NOT the repo root app.py.
+DEPLOYED_MODULE = "deploy/app.py"
 
 api_key = os.environ.get("OPENAI_API_KEY")
 if not api_key:
@@ -121,6 +127,25 @@ class QueryRequest2(BaseModel):
     language: str = ""
 
 
+class QueryRequest(BaseModel):
+    text: str
+    chunks: int = 5
+
+
+class SimilarityResult(BaseModel):
+    topic_path: str
+    content: str
+    similarity_score: float
+    rank: int
+
+
+class SimilarityResponse(BaseModel):
+    results: List[SimilarityResult]
+
+
+_full_reduced_corpus: Optional[list] = None
+
+
 def _openai_model() -> str:
     return os.environ.get("OPENAI_COMPARISON_MODEL") or os.environ.get("OPENAI_MODEL") or "gpt-4o"
 
@@ -180,6 +205,103 @@ def _load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _fr_cosine_numpy(query_vec: np.ndarray, doc_vec: np.ndarray) -> float:
+    q = np.asarray(query_vec, dtype=np.float64).ravel()
+    d = np.asarray(doc_vec, dtype=np.float64).ravel()
+    denom = np.linalg.norm(q) * np.linalg.norm(d)
+    if denom < 1e-12:
+        return 0.0
+    return float(np.dot(q, d) / denom)
+
+
+def _fr_node_label(item: dict) -> str:
+    return (
+        item.get("name")
+        or item.get("chapter_title")
+        or item.get("subchapter_title")
+        or item.get("chunk_name")
+        or "unnamed"
+    )
+
+
+def _fr_node_text(item: dict) -> str:
+    value = item.get("value") or item.get("content")
+    if value:
+        return value if isinstance(value, str) else str(value)
+    return ""
+
+
+def _fr_child_list(item: dict) -> list:
+    return item.get("children") or item.get("subchapters") or []
+
+
+def _fr_concatenate_values(children: list) -> str:
+    if not children:
+        return ""
+    parts: list[str] = []
+    for child in children:
+        if isinstance(child, dict):
+            text = _fr_node_text(child)
+            if text:
+                parts.append(text)
+            nested = _fr_child_list(child)
+            if nested:
+                sub = _fr_concatenate_values(nested)
+                if sub:
+                    parts.append(sub)
+    return "\n\n".join(parts)
+
+
+def _fr_extract_flat(data, parent_path: str = "") -> list:
+    results: list = []
+    if isinstance(data, dict):
+        if "chapters" in data:
+            return _fr_extract_flat(data["chapters"], parent_path)
+        data = [data]
+    if not isinstance(data, list):
+        return results
+    for item in data:
+        if not isinstance(item, dict):
+            continue
+        label = _fr_node_label(item)
+        current_path = f"{parent_path}/{label}" if parent_path else str(label)
+        content = _fr_node_text(item)
+        kids = _fr_child_list(item)
+        if not content and kids:
+            content = _fr_concatenate_values(kids)
+        emb = item.get("embeddings")
+        if emb is None:
+            emb = item.get("embedding")
+        results.append(
+            {
+                "path": current_path,
+                "content": content,
+                "embeddings": emb,
+                "is_leaf": not bool(kids),
+            }
+        )
+        if kids:
+            results.extend(_fr_extract_flat(kids, current_path))
+    return results
+
+
+def _get_full_reduced_corpus() -> list:
+    global _full_reduced_corpus
+    if _full_reduced_corpus is not None:
+        return _full_reduced_corpus
+    if not FULL_REDUCED_JSON_PATH.exists():
+        _full_reduced_corpus = []
+        return _full_reduced_corpus
+    data = json.loads(FULL_REDUCED_JSON_PATH.read_text(encoding="utf-8"))
+    flat = _fr_extract_flat(data)
+    _full_reduced_corpus = [
+        item
+        for item in flat
+        if item.get("embeddings") and (not FULL_REDUCED_LEAF_ONLY or item.get("is_leaf"))
+    ]
+    return _full_reduced_corpus
+
+
 def _listed_routes() -> list[str]:
     paths: list[str] = []
     for route in app.routes:
@@ -199,6 +321,8 @@ async def health():
     return {
         "status": "ok",
         "service": "vidoreader-api",
+        "deployed_module": DEPLOYED_MODULE,
+        "root_app_py_deployed": False,
         "api_version": api_version,
         "ask_ai_enabled": any("/ask-ai" in route for route in routes),
         "routes": routes,
@@ -209,6 +333,7 @@ async def health():
             "comparison_results": COMPARISON_RESULTS_JSON_PATH.exists(),
             "embedding_comparison_results": EMBEDDING_COMPARISON_RESULTS_JSON_PATH.exists(),
             "hamlet_4x4_comparison": HAMLET_4X4_JSON_PATH.exists(),
+            "full_reduced_structured_with_embeddings": FULL_REDUCED_JSON_PATH.exists(),
         },
         "openai_configured": openai_client is not None,
     }
@@ -248,6 +373,67 @@ async def get_hamlet_4x4_comparison():
         return _load_json(HAMLET_4X4_JSON_PATH)
     except FileNotFoundError as error:
         raise HTTPException(status_code=404, detail=str(error)) from error
+
+
+@app.post("/find-similar-full-reduced", response_model=SimilarityResponse)
+async def find_similar_full_reduced(query: QueryRequest):
+    """Same contract as root app.py — textbook semantic search."""
+    corpus = _get_full_reduced_corpus()
+    if not corpus:
+        raise HTTPException(
+            status_code=503,
+            detail=f"Corpus not loaded. Missing {FULL_REDUCED_JSON_PATH.name}.",
+        )
+    try:
+        size = max(1, int(query.chunks))
+        query_vec = _get_query_model().encode(
+            query.text,
+            normalize_embeddings=True,
+            convert_to_numpy=True,
+        )
+        similarities: list[dict] = []
+        for item in corpus:
+            try:
+                raw = _fr_cosine_numpy(query_vec, item["embeddings"])
+                similarities.append(
+                    {
+                        "topic_path": item["path"],
+                        "content": item["content"],
+                        "raw_cosine": raw,
+                    }
+                )
+            except Exception:
+                continue
+        if not similarities:
+            raise HTTPException(status_code=500, detail="No similarity scores computed.")
+        if FULL_REDUCED_SCALE_SCORES:
+            raw_vals = [row["raw_cosine"] for row in similarities]
+            lo, hi = min(raw_vals), max(raw_vals)
+            span = hi - lo
+            for row in similarities:
+                if span > 1e-12:
+                    row["similarity_score"] = (row["raw_cosine"] - lo) / span * 100.0
+                else:
+                    row["similarity_score"] = 100.0
+        else:
+            for row in similarities:
+                row["similarity_score"] = row["raw_cosine"] * 100.0
+        top_results = sorted(similarities, key=lambda x: x["similarity_score"], reverse=True)[:size]
+        out: list[SimilarityResult] = []
+        for index, row in enumerate(top_results):
+            out.append(
+                SimilarityResult(
+                    topic_path=row["topic_path"],
+                    content=row["content"],
+                    similarity_score=round(float(row["similarity_score"]), 4),
+                    rank=size - index,
+                )
+            )
+        return SimilarityResponse(results=out)
+    except HTTPException:
+        raise
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=str(error)) from error
 
 
 @app.post("/compare-embedding-results", response_model=EmbeddingComparisonResponse)

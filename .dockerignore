@@ -10,6 +10,7 @@ __pycache__/
 image_embeddings1.json
 clip_image_embeddings.json
 Full*.json
+!Full_reduced_structured_with_embeddings.json
 PGDM_*.json
 hamlet_version*.json
 AI_wiki_embeddings.json
