@@ -256,8 +256,10 @@ def get_query_model():
     if _query_model is None:
         from sentence_transformers import SentenceTransformer
 
-        model_name = os.environ.get("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
-        local_only = os.environ.get("HF_HUB_OFFLINE", "0") == "1"
+        model_name = os.environ.get("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+        local_only = os.environ.get("TRANSFORMERS_OFFLINE", "0") == "1" or os.environ.get(
+            "HF_HUB_OFFLINE", "0"
+        ) == "1"
         _query_model = SentenceTransformer(model_name, local_files_only=local_only)
     return _query_model
 
