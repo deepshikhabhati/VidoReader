@@ -2,8 +2,11 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import os
-os.environ.setdefault("HF_HUB_OFFLINE", "1")
-os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+
+# Do not force Hugging Face offline in production; Render needs to download models on first use.
+if os.environ.get("USE_HF_OFFLINE", "").lower() in {"1", "true", "yes"}:
+    os.environ.setdefault("HF_HUB_OFFLINE", "1")
+    os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
 
 import torch
 import clip

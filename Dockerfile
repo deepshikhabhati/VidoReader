@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     DATA_ROOT=/app/data \
     TOKENIZERS_PARALLELISM=false \
-    API_VERSION=2026-03-20-full-app-py
+    API_VERSION=2026-03-20-full-app-py-v3
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential git \
@@ -15,12 +15,8 @@ RUN apt-get update \
 COPY deploy/requirements.txt /app/deploy/requirements.txt
 RUN pip install --no-cache-dir -r /app/deploy/requirements.txt
 
-# Download embedding weights while network is available (Render build has Hugging Face access).
-RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
-
-ENV HF_HUB_OFFLINE=1 \
-    TRANSFORMERS_OFFLINE=1 \
-    SENTENCE_TRANSFORMERS_HOME=/root/.cache/torch/sentence_transformers
+# Do not download Hugging Face models at build time — Render builds often cannot reach huggingface.co.
+# Models (MiniLM, BART, CLIP) load lazily at runtime on first request.
 
 COPY app.py runtime_data.py /app/
 COPY project/ /app/project/
