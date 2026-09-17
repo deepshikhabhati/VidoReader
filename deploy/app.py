@@ -180,11 +180,28 @@ def _load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _listed_routes() -> list[str]:
+    paths: list[str] = []
+    for route in app.routes:
+        methods = getattr(route, "methods", None)
+        path = getattr(route, "path", None)
+        if not methods or not path:
+            continue
+        for method in sorted(methods - {"HEAD", "OPTIONS"}):
+            paths.append(f"{method} {path}")
+    return sorted(paths)
+
+
 @app.get("/")
 async def health():
+    api_version = os.environ.get("API_VERSION", "unknown")
+    routes = _listed_routes()
     return {
         "status": "ok",
-        "service": "hamlet-translation-api",
+        "service": "vidoreader-api",
+        "api_version": api_version,
+        "ask_ai_enabled": any("/ask-ai" in route for route in routes),
+        "routes": routes,
         "data_dir": str(DATA_DIR),
         "files": {
             "english_chunks": ENGLISH_CHUNKS_JSON_PATH.exists(),

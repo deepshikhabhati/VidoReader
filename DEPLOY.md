@@ -61,6 +61,17 @@ Steps:
 
 Render builds from the root `Dockerfile`.
 
+If `/ask-ai` returns **404**, production is still on an old image. Fix:
+
+1. Render Dashboard → **vidoreader** → **Manual Deploy**
+2. Choose **Clear build cache & deploy** (important)
+3. Wait until **Live**
+4. Open `https://vidoreader.onrender.com/` and confirm:
+   - `"api_version": "2026-03-20-ask-ai"`
+   - `"ask_ai_enabled": true`
+
+Optional: Settings → **Deploy Hook** → add URL as GitHub secret `RENDER_DEPLOY_HOOK` so pushes auto-deploy.
+
 ### CLI deploy (after `render login`)
 
 ```bash

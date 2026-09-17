@@ -5,7 +5,8 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     DATA_DIR=/app/deploy/data \
-    TOKENIZERS_PARALLELISM=false
+    TOKENIZERS_PARALLELISM=false \
+    API_VERSION=2026-03-20-ask-ai
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential \
