@@ -234,21 +234,32 @@ def _fr_extract_flat(data, parent_path: str = "") -> list:
     return results
 
 
-def get_full_reduced_corpus(leaf_only: bool = True) -> list:
-    if "full_reduced_corpus" in _cache:
-        return _cache["full_reduced_corpus"]
+def get_full_reduced_corpus_and_embeddings(leaf_only: bool = True):
+    if "full_reduced_corpus" in _cache and "full_reduced_embeddings" in _cache:
+        return _cache["full_reduced_corpus"], _cache["full_reduced_embeddings"]
     path = data_path("Full_reduced_structured_with_embeddings.json")
     if not path.exists():
         _cache["full_reduced_corpus"] = []
-        return _cache["full_reduced_corpus"]
+        _cache["full_reduced_embeddings"] = np.array([])
+        return _cache["full_reduced_corpus"], _cache["full_reduced_embeddings"]
     data = json.loads(path.read_text(encoding="utf-8"))
     flat = _fr_extract_flat(data)
-    _cache["full_reduced_corpus"] = [
+    corpus = [
         item
         for item in flat
         if item.get("embeddings") and (not leaf_only or item.get("is_leaf"))
     ]
-    return _cache["full_reduced_corpus"]
+    _cache["full_reduced_corpus"] = corpus
+    if corpus:
+        _cache["full_reduced_embeddings"] = np.array([item["embeddings"] for item in corpus], dtype=np.float32)
+    else:
+        _cache["full_reduced_embeddings"] = np.array([])
+    return _cache["full_reduced_corpus"], _cache["full_reduced_embeddings"]
+
+
+def get_full_reduced_corpus(leaf_only: bool = True) -> list:
+    corpus, _ = get_full_reduced_corpus_and_embeddings(leaf_only)
+    return corpus
 
 
 def get_query_model():

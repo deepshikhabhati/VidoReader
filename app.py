@@ -43,7 +43,7 @@ from runtime_data import (
     get_content_embeddings,
     get_content_embeddings2,
     get_content_embeddings3,
-    get_full_reduced_corpus,
+    get_full_reduced_corpus_and_embeddings,
     get_german_hamlet_embeddings,
     get_hamlet_embeddings1,
     get_hamlet_embeddings2,
@@ -1173,8 +1173,8 @@ async def find_similar_full_reduced(query: QueryRequest):
     Semantic search over the Full_reduced management textbook
     (precomputed embeddings in Full_reduced_structured_with_embeddings.json).
     """
-    full_reduced_corpus = get_full_reduced_corpus(leaf_only=FULL_REDUCED_LEAF_ONLY)
-    if not full_reduced_corpus:
+    full_reduced_corpus, embeddings_matrix = get_full_reduced_corpus_and_embeddings(leaf_only=FULL_REDUCED_LEAF_ONLY)
+    if not full_reduced_corpus or len(embeddings_matrix) == 0:
         raise HTTPException(
             status_code=503,
             detail="Corpus not loaded. Place Full_reduced_structured_with_embeddings.json in DATA_ROOT.",
@@ -1186,20 +1186,20 @@ async def find_similar_full_reduced(query: QueryRequest):
             normalize_embeddings=True,
             convert_to_numpy=True,
         )
+        
+        query_tensor = torch.tensor(query_vec).view(1, -1)
+        corpus_tensor = torch.tensor(embeddings_matrix)
+        cos_scores = util.cos_sim(query_tensor, corpus_tensor)[0].numpy()
+        
         similarities = []
-        for item in full_reduced_corpus:
-            try:
-                raw = _fr_cosine_numpy(query_vec, item["embeddings"])
-                similarities.append(
-                    {
-                        "topic_path": item["path"],
-                        "content": item["content"],
-                        "raw_cosine": raw,
-                    }
-                )
-            except Exception as e:
-                print(f"Full_reduced skip {item.get('path')}: {e}")
-                continue
+        for i, item in enumerate(full_reduced_corpus):
+            similarities.append(
+                {
+                    "topic_path": item["path"],
+                    "content": item["content"],
+                    "raw_cosine": float(cos_scores[i]),
+                }
+            )
         if not similarities:
             raise HTTPException(
                 status_code=500,
